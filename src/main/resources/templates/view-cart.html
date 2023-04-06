@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html th:replace="layout/mainLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+
+                    <table class="table table-sub-heading-color table-striped table-info">
+                        <thead>
+                        <tr class="text-center">
+                            <th>product</th>
+                            <th>name</th>
+                            <th>price</th>
+                            <th>quantity</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center">
+                        <tr th:each="item : ${items}">
+                            <td><img src="../static/images/products" th:src="@{'/images/products/' + ${item.name} + '.png'}" alt=""></td>
+                            <td th:text="${item.name}"></td>
+                            <td th:text="'€	' + ${item.price}"></td>
+                            <td>
+                                <span th:text="${item.quantity}" class="mr-3"></span>
+                                <a href=""  class="btn btn-outline-secondary bg-light rounded-pill">
+                                    <span class="text-dark">update</span>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
