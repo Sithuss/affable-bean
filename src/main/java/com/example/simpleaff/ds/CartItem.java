@@ -1,5 +1,6 @@
 package com.example.simpleaff.ds;
 
+import jakarta.persistence.Embeddable;
 import lombok.Getter;
 import lombok.Setter;
 

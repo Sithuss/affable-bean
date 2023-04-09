@@ -8,7 +8,7 @@
         <div class="text-center mb-4">
             <a th:href="@{/clear-cart}" class="mr-5 p-1 cartLinkButton"><span class="font-weight-bold text-dark underlined">clear cart</span></a>
             <a th:href="@{'/products?cid=2'}" class="mr-5 p-1 cartLinkButton"><span class="font-weight-bold text-dark underlined">continue shopping</span></a>
-            <a href="" class="mr-5 p-1 cartLinkButton"><span class="font-weight-bold text-dark underlined">proceed to checkout</span></a>
+            <a th:href="@{/checkout}" class="mr-5 p-1 cartLinkButton"><span class="font-weight-bold text-dark underlined">proceed to checkout</span></a>
         </div>
         <div class="font-weight-bold ml-lg-5 text-center mb-3">subtotal: € <span th:text="${subtotal}"></span></div>
 

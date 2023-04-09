@@ -75,4 +75,9 @@ public class ProductController {
         return "redirect:/cart-view";
     }
 
+    @GetMapping("/checkout")
+    public String checkOut(Model model) {
+       return "checkout";
+    }
+
 }

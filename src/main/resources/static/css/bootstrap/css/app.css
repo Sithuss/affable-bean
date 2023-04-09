@@ -49,3 +49,9 @@ body{
 .cartLinkButton {
     background: rgba(255,231,138,0.98);
 }
+.checkout {
+    margin-left: 250px;
+}
+.mr-130p{
+    margin-right: 130px;
+}
