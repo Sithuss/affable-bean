@@ -32,4 +32,9 @@ public class Cart {
         return this.cartItems.size();
     }
 
+    public void removeItem(CartItem cartItem) {
+        this.cartItems.remove(cartItem);
+    }
+
+
 }

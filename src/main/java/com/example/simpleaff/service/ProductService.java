@@ -58,4 +58,13 @@ public class ProductService {
     }
 
 
+    public void clearCart() {
+        cart.clearCart();
+    }
+
+    public void updateCart(int id, String name, double price, int quantity) {
+        var cartItem = new CartItem(id, name, price, quantity);
+        cart.removeItem(cartItem);
+        cart.addToCart(cartItem);
+    }
 }

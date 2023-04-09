@@ -10,7 +10,7 @@
         <a th:href="@{'/products?cid=2'}" class="bg-button mb-5">Meats</a>
         <a th:href="@{'/products?cid=1'}" class="bg-button mb-5">Diary</a>
         <a th:href="@{'/products?cid=3'}" class="bg-button mb-5">Bakery</a>
-        <a th:href="@{'/products?cid=4'}" class="bg-button mb-5" >Fruits&Veg</a>
+        <a th:href="@{'/products?cid=4'}" class="bg-button mb-5">Fruits&Veg</a>
       </div>
     </div>
     <div class="col-md-9">
@@ -26,7 +26,7 @@
         <tr th:each="pro : ${products}">
           <td><img src="../static/images/products" th:src="@{'/images/products/' + ${pro.name} + '.png'}" alt=""></td>
           <td th:text="${pro.name}"></td>
-          <td th:text="${pro.price + '$'}"></td>
+          <td th:text="${'€ ' + pro.price}"></td>
           <td><a th:href="@{'/add-cart?id='+${pro.id}}" class="btn btn-outline-secondary rounded-pill"><span class="text-dark">purchase</span></a></td>
         </tr>
         </tbody>
