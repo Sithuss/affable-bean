@@ -17,11 +17,18 @@
 <section>
   <head>
     <div class="container my-5">
-        <a th:href="@{/cart-view}">
-            <img src="../../static/images/cart.gif" style="margin-left: 265px;" th:src="@{/images/cart.gif}" alt="images">
-            <small class="text-dark" th:if="${cartSize} > 1"><span th:text="${cartSize}"></span>  items</small>
-            <small class="text-dark" th:if="${cartSize} <= 1"><span th:text="${cartSize}"></span>  item</small>
-        </a>
+        <div class="container">
+            <div class="row">
+                <a th:href="@{/cart-view}">
+                    <img src="../../static/images/cart.gif" style="margin-left: 265px;" th:src="@{/images/cart.gif}" alt="images">
+                    <small class="text-dark" th:if="${cartSize} > 1"><span th:text="${cartSize}"></span>  items</small>
+                    <small class="text-dark" th:if="${cartSize} <= 1"><span th:text="${cartSize}"></span>  item</small>
+                </a>
+                <div class="ml-auto my-auto">Language toggle</div>
+            </div>
+
+        </div>
+
         <div class="container">
             <img id="logo" src="../../static/images/logo.png" th:src="@{/images/logo.png}" alt="images">
             <img id="logoText" src="../../static/images/logoText.png" th:src="@{/images/logoText.png}" alt="images">

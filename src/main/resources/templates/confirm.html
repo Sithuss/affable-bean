@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html th:replace="layout/mainLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+<div class="container d-flex mr-5 mb-3">
+    <p class="p-3 cartLinkButton">
+        <b>Your order has been successfully processed and will be delievered whithin 24 hours.</b>
+        <br><br>
+        Please keep a not of your confirmation number:
+        <br>
+        If u have a query concerning your order, feel free to <a href="#">contact us.</a>
+        <br><br>
+        Thank you for shipping at the Affable Bean Green Grocer!
+    </p>
+</div>
+    <div class="container mr-5 mb-5">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-header bg-secondary"><b>order summary</b></div>
+                    <div class="card-body p-0"></div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>product</th>
+                                <th>quantity</th>
+                                <th>price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="pItem : ${productItems}">
+                                    <td th:text="${pItem.name}"></td>
+                                    <td th:text="${pItem.quantity}"></td>
+                                    <td th:text="${pItem.price}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
