@@ -4,7 +4,7 @@
 
 in mysql database drop datebase [your db] and createdatabase [yourdb].
 
-In the project application properties, set spring.jpa.hibernate.ddl-auto=create.
+In the project application properties, set spring.jpa.hibernate.ddl-auto=create AND run the app.
 
 Then, in mysql database use [yourdb] and add the following script:
 
