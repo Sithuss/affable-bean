@@ -2,7 +2,7 @@
 
 ### _Do the instructions step-by-step_
 
-in mysql database drop datebase [your db] and createdatabase [yourdb].
+in mysql database drop datebase if exists [your db] and createdatabase [yourdb].
 
 In the project application properties, set spring.jpa.hibernate.ddl-auto=create AND run the app.
 
