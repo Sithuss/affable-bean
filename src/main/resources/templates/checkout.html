@@ -4,17 +4,37 @@
 <body>
 <main role="main">
     <div class="container">
+        <div th:if="${cartSize == 0}" class="alert alert-danger text-center">You have purchased 0 items.</div>
         <h3>checkout</h3>
         <p>In order to purchase the items in your shopping cart, please provide us the following information:</p>
         <div class="row">
             <div class="col-md-7 mt-3 mb-4 p-3 ml-3 cartLinkButton">
                 <form th:action="@{/checkout}" th:object="${purchase}" method="post">
-                    <div class="d-flex mb-2"><span class="mr-2 my-auto" style="margin-left: 120px;">name: </span><input th:field="*{name}" type="text" class="w-75 ml-auto"></div>
-                    <div class="d-flex mb-2"><span class="mr-2 my-auto" style="margin-left: 120px;">email: </span><input th:field="*{email}" type="text" class="w-75 ml-auto"></div>
-                    <div class="d-flex mb-2"><span class="mr-2 my-auto" style="margin-left: 115px;">phone: </span><input th:field="*{phone}" type="text" class="w-75 ml-auto"></div>
+                    <div class="mb-2"><span class="mr-2 my-auto" style="margin-left: 120px;">name: </span><input th:field="*{name}" type="text" style="width: 28.5rem;" class="my-auto ml-auto"
+                    th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'">
+                        <small style="margin-left: 120px;" th:if="${#fields.hasErrors('name')}" class="invalid-feedback" th:errors="*{name}"></small>
+                    </div>
+
+
+                    <div class="mb-2"><span class="mr-2 my-auto" style="margin-left: 120px;">email: </span><input th:field="*{email}" type="text" style="width: 28.5rem;" class="my-auto ml-auto"
+                    th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'">
+                        <small style="margin-left: 120px;" th:if="${#fields.hasErrors('email')}" class="invalid-feedback" th:errors="*{email}"></small>
+                    </div>
+
+                    <div class="mb-2"><span class="mr-2 my-auto" style="margin-left: 115px;">phone: </span><input th:field="*{phone}" type="text" style="width: 28.5rem;" class="my-auto ml-auto"
+                    th:classappend="${#fields.hasErrors('phone')} ? 'is-invalid'">
+                        <small style="margin-left: 115px;" th:if="${#fields.hasErrors('phone')}" class="invalid-feedback" th:errors="*{phone}"></small>
+                    </div>
+
                     <div class="d-flex mb-2"><span class="mr-2 my-auto" style="margin-left: 103px;">address: </span><input th:field="*{address}" type="text" class="w-75 ml-auto"></div>
+
                     <div class="d-flex mb-2"><span class="my-auto mr-2 ml-auto">prague:</span><input type="number" class="rounded" min="1" value = 1 style="width: 50px; height: 20px;"></div>
-                    <div class="d-flex mb-2"><span class="mr-2 my-auto ml-auto">credit card number: </span><input th:field="*{creditCard}" type="text" style="width: 22rem;"></div>
+
+                    <div class="mb-2"><span class="mr-2 my-auto" style="margin-left: 25px;">credit card number: </span><input th:field="*{creditCard}" type="text" style="width: 28.5rem;"
+                    th:classappend="${#fields.hasErrors('creditCard')} ? 'is-invalid'">
+                        <small style="margin-left: 25px;" th:if="${#fields.hasErrors('creditCard')}" class="invalid-feedback" th:errors="*{creditCard}"></small>
+                    </div>
+
                     <div class="d-flex"><button class="mb-3 ml-auto btn btn-outline-dark btn-sm bg-light text-center text-dark rounded-pill mt-2">submit purchase</button></div>
                 </form>
             </div>
@@ -24,12 +44,12 @@
                     <li>A € 3.00 delivery surcharge is <br> applied to all purchase orders
                     </li>
                 </ul>
-                <div class="ml-4 p-3 mr-130p  bg-primary">
-                    <div class="mb-2" style="margin-left: 72px;">subtotal: <span class="font-weight-bold" style="margin-left: 35px;" th:text="${'€ ' + subtotal}"></span></div>
+                <div class="ml-4 p-3 mr-130p" style="background: rgba(193,229,255,0.98)">
+                    <div class="mb-2" style="margin-left: 72px;">subtotal: <span class="font-weight-bold" style="margin-left: 35px;" th:utext="'€ ' + ${#numbers.formatDecimal(subtotal,0,2)}"></span></div>
                     <div class="mb-2">delivery surcharge: <span class="font-weight-bold" style="margin-left: 2rem;">€ 3.00</span></div>
                     <hr>
                     <div style="margin-left: 6rem;">
-                        total: <span class="font-weight-bold" style="margin-left: 2rem;" th:text="${'€ ' + total}"></span>
+                        total: <span class="font-weight-bold" style="margin-left: 2rem;" th:utext="'€ ' + ${#numbers.formatDecimal(total,0,2)}"></span>
                     </div>
                 </div>
             </div>

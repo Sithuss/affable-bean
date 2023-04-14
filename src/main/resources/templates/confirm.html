@@ -7,40 +7,63 @@
     <p class="p-3 cartLinkButton">
         <b>Your order has been successfully processed and will be delievered whithin 24 hours.</b>
         <br><br>
-        Please keep a not of your confirmation number:
+        Please keep a note of your confirmation number:
         <br>
-        If u have a query concerning your order, feel free to <a href="#">contact us.</a>
+        If u have a query concerning your order, feel free to <a href="#" class="text-dark underlined"><u>contact us.</u></a>
         <br><br>
-        Thank you for shipping at the Affable Bean Green Grocer!
+        Thank you for shopping at the Affable Bean Green Grocer!
     </p>
 </div>
     <div class="container mr-5 mb-5">
         <div class="row">
             <div class="col-md-7">
                 <div class="card">
-                    <div class="card-header bg-secondary"><b>order summary</b></div>
-                    <div class="card-body p-0"></div>
-                        <table class="table">
+                    <div class="card-header" style="background: rgba(193,229,255,0.98)"><b>order summary</b></div>
+                    <div class="card-body border-0 p-0" style="background: rgba(217,241,255,0.98)">
+                        <table class="table mb-0">
                             <thead>
                             <tr>
-                                <th>product</th>
-                                <th>quantity</th>
-                                <th>price</th>
+                                <th class="w-50">product</th>
+                                <th class="text-center">quantity</th>
+                                <th class="text-center">price</th>
                             </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="pItem : ${productItems}">
-                                    <td th:text="${pItem.name}"></td>
-                                    <td th:text="${pItem.quantity}"></td>
-                                    <td th:text="${pItem.price}"></td>
-                                </tr>
+                            <tr th:each="pItem : ${productItems}">
+                                <td th:text="${pItem.name}" class="border-0"></td>
+                                <td th:text="${pItem.quantity}" class="text-center border-0"></td>
+                                <td th:text="'€ ' + ${pItem.price}" class="text-center border-0"></td>
+                            </tr>
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="2" class="text-right"><b>delivery surcharge: </b></td>
+                                <td class="text-center">€ 3.00</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-right border-0 border-dark"><b>total: </b></td>
+                                <td class="text-center border-0" th:utext="'€ ' + ${#numbers.formatDecimal(total,0,2)}"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-left border-bottom-0"><b>date processed: </b><span th:text="${#temporals.format(purchased.purchaseDateTime)}"></span></td>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
             </div>
             <div class="col-md-5">
-
+                <div class="card">
+                    <div class="card-header" style="background: rgba(193,229,255,0.98)"><b>delivery address</b></div>
+                    <div class="card-body pb-2" style="background: rgba(217,241,255,0.98)">
+                        <p th:text="${purchased.name}"></p>
+                        <p th:text="${purchased.address}"></p>
+                        <p>Prague ???</p>
+                        <hr style="border-top: 1px solid rgba(0,0,0,.7);">
+                        <p><b>email:</b>&nbsp;&nbsp;&nbsp;<span th:text="${purchased.email}"></span></p>
+                        <p><b>phone:</b>&nbsp;&nbsp;&nbsp;<span th:text="${purchased.phone}"></span></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

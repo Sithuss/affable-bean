@@ -38,8 +38,8 @@ body{
 
 }
 .container a{
-    text-decoration: none!important;
-    color: white!important;
+    text-decoration: none;
+    color: white;
 
 }
 .underlined {
@@ -47,7 +47,7 @@ body{
 }
 
 .cartLinkButton {
-    background: rgba(255,231,138,0.98);
+    background: rgba(255,234,170,0.98);
 }
 .checkout {
     margin-left: 250px;

@@ -94,4 +94,9 @@ public class ProductService {
     public Purchase findPurchase(String email, LocalDateTime dateTime) {
         return purchaseDao.findPurchaseByEmailAndPurchaseDateTime(email, dateTime);
     }
+
+    public double calTotal(List<ProductItem> productItems) {
+        double sum = productItems.stream().mapToDouble(ProductItem::getTotal).sum();
+        return sum + 3.00;
+    }
 }

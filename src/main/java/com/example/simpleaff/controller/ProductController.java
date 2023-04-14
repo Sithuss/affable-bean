@@ -4,9 +4,11 @@ import com.example.simpleaff.ds.CartItem;
 import com.example.simpleaff.entity.ProductItem;
 import com.example.simpleaff.entity.Purchase;
 import com.example.simpleaff.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -87,14 +89,17 @@ public class ProductController {
 
     @GetMapping("/checkout")
     public String checkOut(Model model) {
-        model.addAttribute("toggle", true);
+
         model.addAttribute("purchase" , new Purchase());
        return "checkout";
     }
 
     @PostMapping("/checkout")
-    public String addPurchase(Purchase purchase, Model model) {
-        model.addAttribute("toggle", false);
+    public String addPurchase(@Valid Purchase purchase, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "checkout";
+        }
+
         dateTime = LocalDateTime.now();
         productService.addPurchase(purchase, dateTime);
         pullEmail = purchase.getEmail();
@@ -104,8 +109,10 @@ public class ProductController {
 
     @GetMapping("/confirm")
     public String confirm(Model model) {
-        model.addAttribute("purchased", productService.findPurchase(pullEmail, dateTime));
-        model.addAttribute("productItems", productService.findPurchase(pullEmail, dateTime).getProductItems());
+        var purchased = productService.findPurchase(pullEmail, dateTime);
+        model.addAttribute("purchased", purchased);
+        model.addAttribute("productItems", purchased.getProductItems());
+        model.addAttribute("total", productService.calTotal(purchased.getProductItems()));
         return "confirm";
     }
 
