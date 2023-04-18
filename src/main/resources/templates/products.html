@@ -7,10 +7,10 @@
   <div class="row">
     <div class="col-md-3">
       <div class="d-flex flex-column text-center ">
-        <a th:href="@{'/products?cid=2'}" class="bg-button mb-5">Meats</a>
-        <a th:href="@{'/products?cid=1'}" class="bg-button mb-5">Diary</a>
-        <a th:href="@{'/products?cid=3'}" class="bg-button mb-5">Bakery</a>
-        <a th:href="@{'/products?cid=4'}" class="bg-button mb-5">Fruits&Veg</a>
+        <a th:href="@{'/products?cid=2'}" class="bg-button mb-5" th:text="#{product.meat}"></a>
+        <a th:href="@{'/products?cid=1'}" class="bg-button mb-5" th:text="#{product.dairy}"></a>
+        <a th:href="@{'/products?cid=3'}" class="bg-button mb-5" th:text="#{product.bakery}"></a>
+        <a th:href="@{'/products?cid=4'}" class="bg-button mb-5" th:text="#{product.fruitsveg}"></a>
       </div>
     </div>
     <div class="col-md-9">

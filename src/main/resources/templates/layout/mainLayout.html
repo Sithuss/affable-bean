@@ -24,7 +24,16 @@
                     <small class="text-dark" th:if="${cartSize} > 1"><span th:text="${cartSize}"></span>  items</small>
                     <small class="text-dark" th:if="${cartSize} <= 1"><span th:text="${cartSize}"></span>  item</small>
                 </a>
-                <div class="ml-auto my-auto">Language toggle</div>
+                <div class="ml-auto my-auto dropdown"></div>
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Language toggle
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item text-dark" th:href="@{'/?lang=us'}">English</a>
+                    <a class="dropdown-item text-dark" th:href="@{'/?lang=de'}">German</a>
+                    <a class="dropdown-item text-dark" th:href="@{'/?lang=ja'}">Japan</a>
+                    <a class="dropdown-item text-dark" th:href="@{'/?lang=my'}">Burmese</a>
+                </div>
             </div>
 
         </div>
